@@ -1,5 +1,10 @@
 import { createKnex } from "./knex";
 
+import { config } from "dotenv";
+import { resolve } from "path";
+
+config({ path: resolve(__dirname, "../.env") });
+
 const KnexSql = createKnex({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
