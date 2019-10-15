@@ -5,8 +5,8 @@ exports.up = function(knex) {
             table.text("id");
             table.text("name").notNullable();
             table.boolean("blocked").notNullable().defaultTo(false);
-            table.timestamp("createdAt").notNullable();
-            table.timestamp("updatedAt").notNullable();
+            table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now());
+            table.timestamp("updatedAt");
             table.timestamp("deletedAt");
             table.timestamp("dueDate").notNullable();
             table.primary(["id"]);
