@@ -13,7 +13,7 @@ class RegisterController {
                 id: uuid.v4(),
                 name: req.body.name,
                 blocked: req.body.blocked,
-                dueDate: moment().toDate()
+                dueDate: moment().add(1, "year").toDate()
             };
 
             await knex("partners").insert(partner);
@@ -39,7 +39,7 @@ class RegisterController {
                 phone: req.body.phone,
                 partnerId: req.body.partnerId,
                 blocked: req.body.blocked,
-                dueDate: moment().toDate() 
+                dueDate: moment().add(1, "year").toDate() 
             };
 
             await knex("partners_admin").insert(adminPartner);
@@ -57,7 +57,7 @@ class RegisterController {
 
     public async createUser (req: Request, res: Response) {
         try {
-            const adminPartner: CreateUser = {
+            const user: CreateUser = {
                 id: uuid.v4(),
                 name: req.body.name,
                 email: req.body.email,
@@ -68,7 +68,7 @@ class RegisterController {
                 dueDate: moment().toDate() 
             };
 
-            await knex("users").insert(adminPartner);
+            await knex("users").insert(user);
 
             return res.json({
                 message: "user created"

@@ -17,14 +17,14 @@ routes.post("/partner/createAdmin", RegisterController.createAdminPartner);
 // Admin Partner //
 
 routes.post("/partnerAdmin/login", AuthController.loginPartnerAdmin);
-routes.post("/user/create", RegisterController.createUser);
+routes.post("/partnerAdmin/createUser", RegisterController.createUser);
 
 // User //
 
 routes.post("/user/login", AuthController.loginUser);
 
 // Post //
-routes.post("/post/patient", PostController.patient);
+routes.post("/post/user", PostController.user);
 routes.post("/post/partner", PostController.partner);
 
 // Feedback //
