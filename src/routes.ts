@@ -1,6 +1,8 @@
 import { Router } from "express";
 import AuthController from "./controllers/auth";
 import RegisterController from "./controllers/register";
+import PostController from "./controllers/post";
+import FeedbackController from "./controllers/feedback";
 
 const routes = Router();
 
@@ -20,5 +22,12 @@ routes.post("/user/create", RegisterController.createUser);
 // User //
 
 routes.post("/user/login", AuthController.loginUser);
+
+// Post //
+routes.post("/post/patient", PostController.patient);
+routes.post("/post/partner", PostController.partner);
+
+// Feedback //
+routes.post("/feedback", FeedbackController.add);
 
 export default routes;

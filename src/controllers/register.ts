@@ -4,7 +4,7 @@ import { CreatePartner } from "../models/partner";
 import { CreatePartnerAdmin } from "../models/partnerAdmin";
 import { CreateUser } from "../models/user";
 import * as uuid from "uuid";
-import * as moment from "moment";
+import moment from "moment";
 
 class RegisterController {
     public async createPartner (req: Request, res: Response) {
