@@ -21,4 +21,5 @@ export interface PartnerAdmin {
     phone: string
     email: string
     partnerId: string
+    blocked: boolean
 }

@@ -9,9 +9,8 @@ const routes = Router();
 // Dashboard Manager //
 routes.post("/dashboard/createPartner", RegisterController.createPartner);
 
-// Partner //
+// Partner Dashboard //
 
-routes.post("/partner/login", AuthController.loginPartner);
 routes.post("/partner/createAdmin", RegisterController.createAdminPartner);
 
 // Admin Partner //

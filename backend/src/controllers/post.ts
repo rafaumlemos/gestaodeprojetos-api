@@ -33,8 +33,9 @@ class PostController {
     public async partner (req: Request, res: Response) {
         try {
             // validate partner admin and get partner id
+            const id = uuid.v4();
             const post: CreatePostPartnerAdmin = {
-                id: uuid.v4(),
+                id,
                 title: req.body.title,
                 content: req.body.content,
                 image: req.body.image || null,
@@ -45,7 +46,7 @@ class PostController {
             await knex("posts_partners").insert(post);
 
             return res.json({
-                message: "testing ok"
+                id
             });
         } catch (error) {
             console.log(error);

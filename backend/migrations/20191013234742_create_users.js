@@ -14,6 +14,7 @@ exports.up = function(knex) {
             table.timestamp("updatedAt");
             table.timestamp("deletedAt");
             table.primary(["id"]);
+            table.index(["email", "partnerId"], "users_unique_email_partnerId");
             table.foreign("partnerId").references("partners.id");
         });
 };
