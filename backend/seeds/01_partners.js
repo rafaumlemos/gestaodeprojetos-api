@@ -1,7 +1,9 @@
 const moment = require("moment");
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
+  await knex('posts_partners').del();
   await knex('partners_admin').del();
+  await knex('posts_users').del();
   await knex('users').del();
   return knex('partners').del()
     .then(function () {
