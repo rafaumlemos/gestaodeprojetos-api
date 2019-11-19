@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import api from "../services/api";
 
 class SignInForm extends Component {
@@ -24,12 +25,13 @@ class SignInForm extends Component {
         });
     }
 
-    async handleSubmit(e) {
-        const { email, password } = this.state;
+    handleSubmit = async e => {
+        const {email, password} = this.state;
         try {
-            console.log("login efetuado");
-            // const { data } = await api.post("login", { email, password });
-        } catch (err) {
+            const { data } = await api.post("user/login", { email, password, partnerId: "1" });
+            console.log(data);
+            this.props.history.push("/feed/user");
+        } catch (error) {
             this.setState({
                 error:
                     "Houve um problema com o login, verifique suas credenciais."

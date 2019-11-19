@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import api from "../services/api";
 
 class SignUpForm extends Component {
     constructor() {
@@ -26,11 +26,26 @@ class SignUpForm extends Component {
         });
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-
-        console.log('The form was submitted with the following data:');
-        console.log(this.state);
+    async handleSubmit(e) {
+        const {email, password, name, phone} = this.state;
+        try {
+            const { data } = api.post("partnerAdmin/createUser", {
+                name,
+                email,
+                password,
+                phone,
+                partnerId: "1",
+                blocked: false,
+                dueDate: new Date()
+            });
+            console.log(data);
+            this.props.history.push("/feed/user");
+        } catch (error) {
+            this.setState({
+                error:
+                    "Houve um problema com o login, verifique suas credenciais."
+            });
+        }
     }
 
     render() {
