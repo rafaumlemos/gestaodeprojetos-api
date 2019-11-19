@@ -23,7 +23,7 @@ class AuthController {
             const partnerAdmin: PartnerAdmin = result[0];
             if (!partnerAdmin || partnerAdmin.blocked) throw "auth error";
             return res.json({
-                partnerAdmin
+                ...partnerAdmin
             });
         } catch (error) {
             console.log(error);
@@ -41,10 +41,18 @@ class AuthController {
                 password,
                 partnerId
             };
-            const user: User = await knex("partners_admin").where({login})[0];
+            const result = await knex("users").select(
+                "id",
+                "name",
+                "phone",
+                "email",
+                "partnerId",
+                "blocked"
+            ).where({...login});
+            const user: User = result[0];
             if (!user || user.blocked) throw "auth error";
             return res.json({
-                user
+                ...user
             });
         } catch (error) {
             console.log(error);
