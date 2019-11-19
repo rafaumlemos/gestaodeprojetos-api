@@ -25,7 +25,7 @@ class SignInForm extends Component {
         });
     }
 
-    handleSubmit = async e => {
+    handleSubmit = async (e) => {
         const {email, password} = this.state;
         try {
             const { data } = await api.post("user/login", { email, password, partnerId: "1" });
@@ -42,7 +42,6 @@ class SignInForm extends Component {
     render() {
         return (
         <div className="FormCenter">
-            <form onSubmit={this.handleSubmit} className="FormFields">
             <div className="FormField">
                 <label className="FormField__Label" htmlFor="email">email</label>
                 <input type="email" id="email" className="FormField__Input" placeholder="insira seu email" name="email" value={this.state.email} onChange={this.handleChange} />
@@ -54,9 +53,8 @@ class SignInForm extends Component {
               </div>
 
               <div className="FormField">
-                  <button className="FormField__Button mr-20">Entrar</button>
+                  <button onClick={() => this.handleSubmit()} className="FormField__Button mr-20">Entrar</button>
               </div>
-            </form>
           </div>
         );
     }

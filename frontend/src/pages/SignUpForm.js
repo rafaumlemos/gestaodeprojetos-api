@@ -26,7 +26,7 @@ class SignUpForm extends Component {
         });
     }
 
-    async handleSubmit(e) {
+    handleSubmit = async (e) => {
         const {email, password, name, phone} = this.state;
         try {
             const { data } = api.post("partnerAdmin/createUser", {
@@ -51,7 +51,6 @@ class SignUpForm extends Component {
     render() {
         return (
         <div className="FormCenter">
-            <form onSubmit={this.handleSubmit} className="FormFields">
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="name">nome</label>
                 <input type="text" id="name" className="FormField__Input" placeholder="nome do usuário" name="name" value={this.state.name} onChange={this.handleChange} />
@@ -70,9 +69,8 @@ class SignUpForm extends Component {
               </div>
 
               <div className="FormField">
-                  <button className="FormField__Button mr-20">Criar</button>
+                  <button onClick={() => this.handleSubmit()} className="FormField__Button mr-20">Criar</button>
               </div>
-            </form>
           </div>
         );
     }
