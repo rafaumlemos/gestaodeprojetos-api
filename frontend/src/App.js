@@ -3,6 +3,9 @@ import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import SignInForm from './pages/SignInForm';
 import SignUpForm from './pages/SignUpForm';
+import UserFeed from './pages/UserFeed';
+import PartnerFeed from './pages/PartnerFeed';
+import Routes from './routes';
 
 class App extends Component {
   render() {
@@ -23,6 +26,12 @@ class App extends Component {
               </Route>
 
               <Route path="/sign-in" component={SignInForm}>
+              </Route>
+
+              <Route path="/feed/user" component={UserFeed}>
+              </Route>
+
+              <Route path="/feed/partner" component={PartnerFeed}>
               </Route>
           </div>
 
