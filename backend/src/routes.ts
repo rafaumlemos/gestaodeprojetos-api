@@ -25,6 +25,8 @@ routes.post("/user/login", AuthController.loginUser);
 // Post //
 routes.post("/post/user", PostController.user);
 routes.post("/post/partner", PostController.partner);
+routes.get("/post/users/:id", PostController.getUsersPostContentById);
+routes.get("/post/partners/:id", PostController.getPartnersPostContentById);
 
 // Feedback //
 routes.post("/feedback", FeedbackController.add);

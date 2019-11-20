@@ -10,6 +10,6 @@ export interface AddFeedback extends Feedback {
 }
 
 export enum FeedbackType {
-    User,
-    PartnerAdmin
+    User = "user",
+    PartnerAdmin = "partnerAdmin"
 }
