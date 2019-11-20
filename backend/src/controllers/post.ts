@@ -75,24 +75,8 @@ class PostController {
     public async getUsersPostContentById(req: Request, res: Response) {
         try {
             const { id } = req.params;
-            const post = (await knex("posts_users").select(
-                "posts_users.id",
-                "title",
-                "content",
-                "image",
-                "createdBy",
-                "partnerId"
-            ).where({id}))[0] as Post;
-            if (!post) throw "post content not found";
-            const feedbacks = (await knex("posts_users_feedbacks").select(
-                "id as feedbackId",
-                "addedBy",
-                "comment",
-                "createdAt",
-                "updatedAt"
-            ).where({"postId": id})) as FeedbackContent[];
-            const response: PostContent = {...post, feedbacks};
-            return res.json(response);
+            const result = await getUsersPostContent(id);
+            return res.json(result);
         } catch (error) {
             console.log(error);
             return res.status(500).json({
@@ -104,31 +88,67 @@ class PostController {
     public async getPartnersPostContentById(req: Request, res: Response) {
         try {
             const { id } = req.params;
-            const post = (await knex("posts_partners").select(
-                "posts_partners.id",
-                "title",
-                "content",
-                "image",
-                "createdBy",
-                "partnerId"
-            ).where({id})
-            )[0] as Post;
-            if (!post) throw "post user content not found";
-            const feedbacks = (await knex("posts_partners_feedbacks").select(
-                "id as feedbackId",
-                "addedBy",
-                "comment",
-                "createdAt",
-                "updatedAt"
-            ).where({"postId": id})) as FeedbackContent[];
-            const response: PostContent = {...post, feedbacks};
-            return res.json(response);
+            const result = await getPartnersPostContent(id);
+            return res.json(result);
         } catch (error) {
             console.log(error);
             return res.status(500).json({
                 message: "get partners post content error"
             });
         }
+    }
+    
+}
+
+async function getUsersPostContent(id: string) {
+    try {
+        const post = (await knex("posts_users").select(
+            "posts_users.id",
+            "title",
+            "content",
+            "image",
+            "createdBy",
+            "partnerId"
+        ).where({id}))[0] as Post;
+        if (!post) throw "post content not found";
+        const feedbacks = (await knex("posts_users_feedbacks").select(
+            "id as feedbackId",
+            "addedBy",
+            "comment",
+            "createdAt",
+            "updatedAt"
+        ).where({"postId": id})) as FeedbackContent[];
+        const response: PostContent = {...post, feedbacks};
+        return response;
+    } catch (error) {
+        console.log(error);
+        throw "get users post content error";
+    }
+}
+
+async function getPartnersPostContent(id: string) {
+    try {
+        const post = (await knex("posts_partners").select(
+            "posts_partners.id",
+            "title",
+            "content",
+            "image",
+            "createdBy",
+            "partnerId"
+        ).where({id}))[0] as Post;
+        if (!post) throw "post content not found";
+        const feedbacks = (await knex("posts_partners_feedbacks").select(
+            "id as feedbackId",
+            "addedBy",
+            "comment",
+            "createdAt",
+            "updatedAt"
+        ).where({"postId": id})) as FeedbackContent[];
+        const response: PostContent = {...post, feedbacks};
+        return response;
+    } catch (error) {
+        console.log(error);
+        throw "get partners post content error";
     }
 }
 
