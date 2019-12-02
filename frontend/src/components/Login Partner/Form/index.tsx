@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 export const LoginFormComp = (props: any) => {
 	const handleLogin = async () => {
 		const body = {
-			email: "testeuser1parceiro1@gmail.com",
-			password: "testeuser1parceiro1",
+			email: "testeadmin1partner1@gmail.com",
+			password: "testeadminuser1parceiro1",
 			partnerId: "1000"
 		};
 		const result = await api.post("/user/login", body);
@@ -19,11 +19,11 @@ export const LoginFormComp = (props: any) => {
 	};
 	return (
 		<FormWrapper>
-			<Title>Acompanhando Saúde | Login</Title>
+			<Title>Acompanhando Saúde | Partner Login</Title>
 			<TextInput />
 			<PasswordTextInput />
 			<Button onClick={handleLogin}>
-				<Link to={"/feed/user"}>Login</Link>
+				<Link to={"feed/partner"}>Login</Link>
 			</Button>
 		</FormWrapper>
 	);
