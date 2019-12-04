@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Content, ImageSection, LoginSection, SvgWrapper } from "./style";
 
-import { SchoolKidSvg } from "../../assets/Svg/SchoolKidSvg";
+import { MedicineSvg } from "../../assets/Svg/Medicine";
 
 import { LoginForm } from "./Form";
 
@@ -11,7 +11,7 @@ export const LoginComp = () => {
 		<Content>
 			<ImageSection>
 				<SvgWrapper>
-					<SchoolKidSvg />
+					<MedicineSvg />
 				</SvgWrapper>
 			</ImageSection>
 			<LoginSection>

@@ -1,0 +1,20 @@
+.dale {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    flex-direction: column;
+    background-color: #2F4858;
+}
+
+.dale2 {
+    margin-bottom: 50px;
+}
+
+.dale3 {
+    background-color: white;
+    padding: 100px;
+}
+
+.butaozinho {
+    background: teal;
+}
