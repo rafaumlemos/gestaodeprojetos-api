@@ -104,7 +104,7 @@ export default function RecipeReviewCard({avatar, title, subheader, image, conte
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
+          <Typography paragraph>Feedback Equipe Médica:</Typography>
           <Typography paragraph>
             {feedback}
           </Typography>
